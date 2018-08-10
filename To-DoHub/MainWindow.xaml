@@ -13,7 +13,30 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="0, 0, 0, 10">
-            <TextBox Name="textbox" FontSize="14" Height="30" KeyDown="TextBox_KeyDown" VerticalContentAlignment="Center"/>
+            <TextBox Name="textbox" FontSize="14" Height="30" KeyDown="TextBox_KeyDown" VerticalContentAlignment="Center">
+                <TextBox.Style>
+                    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <Style.Resources>
+                            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Center" AlignmentY="Center" Stretch="None">
+                                <VisualBrush.Visual>
+                                    <Label Content="투두를 적어주세요!" Foreground="Gray" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="Text" Value="{x:Null}">
+                                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="Background" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
         </StackPanel>
         <ListBox Name="todolist" Grid.Row="1" FontSize="13">
         </ListBox>
