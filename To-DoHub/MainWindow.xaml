@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:To_DoHub"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0, 0, 0, 10">
+            <TextBox Name="textbox" FontSize="14" Height="30" KeyDown="TextBox_KeyDown" VerticalContentAlignment="Center"/>
+        </StackPanel>
+        <ListBox Name="todolist" Grid.Row="1" FontSize="13">
+        </ListBox>
     </Grid>
 </Window>

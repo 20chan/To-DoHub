@@ -24,5 +24,14 @@ namespace To_DoHub
         {
             InitializeComponent();
         }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                todolist.Items.Add(new CheckBox() { Content = textbox.Text, Margin = new Thickness(3) });
+                textbox.Clear();
+            }
+        }
     }
 }
