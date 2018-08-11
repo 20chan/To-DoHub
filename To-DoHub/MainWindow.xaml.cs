@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,16 +21,25 @@ namespace To_DoHub
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Project> projects = new ObservableCollection<Project>();
+
         public MainWindow()
         {
             InitializeComponent();
+            projects.Add(new Project { Name = "하이욤", TODOs = new ObservableCollection<TODO>(new List<TODO>()
+            {
+                new TODO() { Description = "", IsDone = false },
+                new TODO() { Description = "", IsDone = false },
+                new TODO() { Description = "", IsDone = true },
+                new TODO() { Description = "", IsDone = false },
+            }) });
+            todolist.ItemsSource = projects;
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                todolist.Items.Add(new CheckBox() { Content = textbox.Text, Margin = new Thickness(3) });
                 textbox.Clear();
             }
         }

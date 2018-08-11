@@ -38,7 +38,21 @@
                 </TextBox.Style>
             </TextBox>
         </StackPanel>
-        <ListBox Name="todolist" Grid.Row="1" FontSize="13">
-        </ListBox>
+        <ListView Name="todolist" Grid.Row="1" FontSize="13" HorizontalContentAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ListViewItem HorizontalContentAlignment="Stretch">
+                        <Grid HorizontalAlignment="Stretch" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <CheckBox Grid.Column="0" IsChecked="{Binding IsDone}" Content="{Binding Name}" Margin="3" />
+                            <ProgressBar Grid.Column="1" HorizontalContentAlignment="Right" Minimum="0" Maximum="1" Value="{Binding Progress}" MinWidth="50"/>
+                        </Grid>
+                    </ListViewItem>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
