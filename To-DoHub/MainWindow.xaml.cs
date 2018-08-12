@@ -38,15 +38,12 @@ namespace To_DoHub
             }
         }
 
-        private void ListViewItem_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ItemClicked(object sender, MouseButtonEventArgs e)
         {
-            var selected = projects[todolist.SelectedIndex];
-            var window = new ProjectViewer(selected);
-            window.ShowDialog();
-        }
-
-        private void todolist_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            var source = (DependencyObject)e.OriginalSource;
+            var item = source.FindParent<ListViewItem>();
+            if (item == null) return;
+            item.IsSelected = true;
             var selected = projects[todolist.SelectedIndex];
             var window = new ProjectViewer(selected);
             window.ShowDialog();

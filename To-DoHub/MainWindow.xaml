@@ -38,10 +38,10 @@
                 </TextBox.Style>
             </TextBox>
         </StackPanel>
-        <ListView Name="todolist" Grid.Row="1" FontSize="13" HorizontalContentAlignment="Stretch" SelectionChanged="todolist_SelectionChanged">
+        <ListView Name="todolist" Grid.Row="1" FontSize="13" HorizontalContentAlignment="Stretch" SelectionMode="Single" MouseDoubleClick="ItemClicked">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch" >
+                    <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>

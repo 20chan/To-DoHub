@@ -24,6 +24,7 @@ namespace To_DoHub
         {
             InitializeComponent();
             self = project;
+            this.Title = self.Name;
             this.todolist.ItemsSource = project.TODOs;
         }
 
