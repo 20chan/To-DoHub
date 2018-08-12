@@ -26,13 +26,6 @@ namespace To_DoHub
         public MainWindow()
         {
             InitializeComponent();
-            projects.Add(new Project { Name = "하이욤", TODOs = new ObservableCollection<TODO>(new List<TODO>()
-            {
-                new TODO() { Description = "", IsDone = false },
-                new TODO() { Description = "", IsDone = false },
-                new TODO() { Description = "", IsDone = true },
-                new TODO() { Description = "", IsDone = false },
-            }) });
             todolist.ItemsSource = projects;
         }
 
@@ -40,8 +33,23 @@ namespace To_DoHub
         {
             if (e.Key == Key.Enter)
             {
+                projects.Add(new Project { Name = textbox.Text });
                 textbox.Clear();
             }
+        }
+
+        private void ListViewItem_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var selected = projects[todolist.SelectedIndex];
+            var window = new ProjectViewer(selected);
+            window.ShowDialog();
+        }
+
+        private void todolist_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = projects[todolist.SelectedIndex];
+            var window = new ProjectViewer(selected);
+            window.ShowDialog();
         }
     }
 }
